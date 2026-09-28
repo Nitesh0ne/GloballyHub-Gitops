@@ -3,16 +3,9 @@ kind: Application
 metadata:
   name: globallyhub-staging
   namespace: argocd
+
 spec:
   project: default
-
-  source:
-    repoURL: https://github.com/Nitesh0ne/GloballyHub-Infra-Repo.git
-    targetRevision: main
-    path: helm/application
-    helm:
-      valueFiles:
-        - $values/environments/staging/values.yaml
 
   sources:
     - repoURL: https://github.com/Nitesh0ne/GloballyHub-Infra-Repo.git
@@ -34,5 +27,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
     syncOptions:
       - CreateNamespace=true
