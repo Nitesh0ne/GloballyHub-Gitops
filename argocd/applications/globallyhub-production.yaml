@@ -6,6 +6,13 @@ metadata:
 spec:
   project: default
 
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas
+
+
   sources:
     - repoURL: https://github.com/Nitesh0ne/GloballyHub-Infra-Repo.git
       targetRevision: main
