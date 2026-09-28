@@ -1,8 +1,8 @@
 replicaCount: 2
 
 image:
-  repository: docker.io/nitace/globallyhub-app
-  tag: "latest"
+  repository: docker.io/Nitesh0ne/globallyhub-app
+  tag: "5b7cc28e2b4235dc8fef894305fd1ed4f0fc41b7"
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
