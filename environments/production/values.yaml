@@ -2,7 +2,7 @@ replicaCount: 3
 
 image:
   repository: docker.io/nitace/globallyhub-app
-  tag: "production-latest"
+  tag: "922e0d675c65761cbae7c12cf820d8656d885f64"
   pullPolicy: IfNotPresent
 
 service:
