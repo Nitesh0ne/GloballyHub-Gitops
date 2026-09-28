@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: globallyhub-monitoring
+  namespace: argocd
+
+spec:
+  project: default
+
+  sources:
+    - repoURL: https://github.com/Nitesh0ne/GloballyHub-Infra-Repo.git
+      targetRevision: main
+      path: helm/monitoring-stack
+      helm:
+        valueFiles:
+          - $values/monitoring/alloy/values.yaml
+
+    - repoURL: https://github.com/Nitesh0ne/GloballyHub-Gitops.git
+      targetRevision: main
+      ref: values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
