@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: globallyhub-postgresql-production
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Nitesh0ne/GloballyHub-Infra-Repo.git
+    targetRevision: main
+    path: helm/postgresql
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: globallyhub-production
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
