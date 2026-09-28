@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: docker.io/nitace/globallyhub-app
-  tag: "staging-latest"
+  tag: "357299f6fd4263281d61572fb2ca1b5d4c96963d"
   pullPolicy: IfNotPresent
 
 service:
