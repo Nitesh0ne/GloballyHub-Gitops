@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: globallyhub-production
+  namespace: argocd
+spec:
+  project: default
+
+  sources:
+    - repoURL: https://github.com/Nitesh0ne/GloballyHub-Infra-Repo.git
+      targetRevision: main
+      path: helm/application
+      helm:
+        valueFiles:
+          - $values/environments/production/values.yaml
+
+    - repoURL: https://github.com/Nitesh0ne/GloballyHub-Gitops.git
+      targetRevision: main
+      ref: values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: globallyhub-production
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

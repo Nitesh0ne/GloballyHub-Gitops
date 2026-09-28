@@ -1,40 +1,25 @@
 replicaCount: 2
 
 image:
-  repository: docker.io/Nitesh0ne/globallyhub-app
-  tag: "32e6f5919929139eec47e02a4a48268575a07ab8"
+  repository: docker.io/nitace/globallyhub-app
+  tag: "staging-latest"
   pullPolicy: IfNotPresent
-
-imagePullSecrets: []
-
-nameOverride: ""
-fullnameOverride: ""
 
 service:
   type: ClusterIP
   port: 80
   targetPort: 8080
 
-containerPort: 8080
-
 ingress:
   enabled: true
   className: ""
   annotations: {}
   hosts:
-    - host: app.example.com
+    - host: globallyhub-staging.example.com
       paths:
         - path: /
           pathType: Prefix
   tls: []
-
-resources:
-  requests:
-    cpu: 100m
-    memory: 128Mi
-  limits:
-    cpu: 500m
-    memory: 512Mi
 
 autoscaling:
   enabled: true
